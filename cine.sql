@@ -87,12 +87,46 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `id_personne` int NOT NULL AUTO_INCREMENT,
   `nom_personne` varchar(50) NOT NULL,
   `prenom_personne` varchar(50) NOT NULL,
-  `dateNaissance` datetime NOT NULL,
+  `dateNaissance` date NOT NULL,
   `sexe` varchar(50) NOT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_hajar.personne : ~0 rows (environ)
+-- Listage des données de la table cinema_hajar.personne : ~33 rows (environ)
+INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `dateNaissance`, `sexe`) VALUES
+	(1, 'Tarantino', 'Quentin', '1963-03-27', 'Homme'),
+	(2, 'Cameron', 'James', '1954-08-16', 'Homme'),
+	(3, 'Eastwood', 'Clint', '1930-05-31', 'Homme'),
+	(4, 'Nolan', 'Christopher', '1970-07-30', 'Homme'),
+	(5, 'Burton', 'Tim', '1958-08-25', 'Homme'),
+	(6, 'Fincher', 'David', '1962-08-28', 'Homme'),
+	(7, 'Thurman', 'Uma', '1970-04-22', 'Femme'),
+	(8, 'Liu', 'Lucy', '1968-12-02', 'Femme'),
+	(9, 'Carradine', 'John', '1936-12-08', 'Homme'),
+	(10, 'DiCaprio', 'Leonardo', '1974-11-11', 'Homme'),
+	(11, 'Winslet', 'Kate', '1975-10-05', 'Femme'),
+	(12, 'Zane', 'Billy', '1966-02-24', 'Homme'),
+	(13, 'Worthington', 'Sam', '1976-08-02', 'Homme'),
+	(14, 'Saldana', 'Zoê', '1978-06-19', 'Femme'),
+	(15, 'Weaver', 'Sigourney', '1949-10-08', 'Femme'),
+	(16, 'Penn', 'Sean', '1960-08-17', 'Homme'),
+	(17, 'Robbins', 'Tim', '1958-10-16', 'Homme'),
+	(18, 'Bacon', 'Kevin', '1958-08-08', 'Homme'),
+	(19, 'McConaughey', 'Matthew', '1969-11-04', 'Homme'),
+	(20, 'Hathaway', 'Anne', '1982-11-12', 'Femme'),
+	(21, 'Chastain', 'Jessica', '1977-03-24', 'Femme'),
+	(22, 'Murphy', 'Cilian', '1976-05-25', 'Homme'),
+	(23, 'Gordon-Levitt', 'Joseph', '1981-02-17', 'Homme'),
+	(24, 'Travolta', 'John', '1954-02-18', 'Homme'),
+	(25, 'Jackson', 'Samuel', '1948-12-21', 'Homme'),
+	(26, 'Keaton', 'Michael', '1951-09-05', 'Homme'),
+	(27, 'Ryder', 'Winona', '1971-10-29', 'Femme'),
+	(28, 'Davis', 'Greena', '1956-01-21', 'Femme'),
+	(29, 'Norton', 'Edward', '1969-08-18', 'Homme'),
+	(30, 'Pitt', 'Brad', '1963-12-18', 'Homme'),
+	(31, 'Bonham Carter', 'Helena', '1966-05-25', 'Femme'),
+	(32, 'Freeman', 'Morgan', '1937-06-01', 'Homme'),
+	(33, 'Spacey', 'Kevin', '1959-07-26', 'Homme');
 
 -- Listage de la structure de table cinema_hajar. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
