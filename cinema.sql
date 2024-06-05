@@ -14,7 +14,7 @@ réalisateur*/
   /*7-Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de 
 sortie (du film le plus récent au plus ancien)*/
 
-/*8-Liste des personnes qui sont à la fois acteurs et réalisateurs*:
+/*8-Liste des personnes qui sont à la fois acteurs et réalisateurs*/
 
 /*9-Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)*/
 
