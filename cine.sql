@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_hajar.film : ~0 rows (environ)
+-- Listage des données de la table cinema_hajar.film : ~1 rows (environ)
 
 -- Listage de la structure de table cinema_hajar. genre
 CREATE TABLE IF NOT EXISTS `genre` (
@@ -80,7 +80,13 @@ CREATE TABLE IF NOT EXISTS `genre` (
   PRIMARY KEY (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema_hajar.genre : ~0 rows (environ)
+-- Listage des données de la table cinema_hajar.genre : ~5 rows (environ)
+INSERT INTO `genre` (`id_genre`, `nomGenre`) VALUES
+	(1, 'Drame'),
+	(2, 'Thriller'),
+	(3, 'Action'),
+	(4, 'Science-fiction'),
+	(5, 'Comédie');
 
 -- Listage de la structure de table cinema_hajar. personne
 CREATE TABLE IF NOT EXISTS `personne` (
