@@ -57,13 +57,22 @@ INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
 WHERE realisateur.id_personne = acteur.id_personne;
 
 /*9-Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)*/
+SELECT film.date_sortie, film.titre
+FROM film
+WHERE date_sortie < 2019
+ORDER BY film.date_sortie DESC;
 
 /*10-Nombre d’hommes et de femmes parmi les acteurs*/
 
 /*11-Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)*/
 
 /*12-Acteurs ayant joué dans 3 films ou plus*/
-
+ SELECT personne.nom_personne, personne.prenom_personne , COUNT(casting.id_film) AS nb_film
+    FROM casting 
+    INNER JOIN acteur ON acteur.id_acteur = casting.id_acteur
+    INNER JOIN personne ON personne.id_personne = acteur.id_personne
+    GROUP BY personne.prenom_personne ,personne.nom_personne
+    HAVING COUNT(casting.id_film) >=3;
 
 
 
