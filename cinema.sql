@@ -63,6 +63,10 @@ WHERE date_sortie < 2019
 ORDER BY film.date_sortie DESC;
 
 /*10-Nombre d’hommes et de femmes parmi les acteurs*/
+SELECT personne.sexe, COUNT(personne.sexe) AS nombre_acteurs
+FROM acteur
+INNER JOIN personne ON acteur.id_personne = personne.id_personne
+GROUP BY personne.sexe;
 
 /*11-Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)*/
 
