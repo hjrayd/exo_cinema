@@ -30,6 +30,12 @@ INNER JOIN personne ON realisateur.id_personne = personne.id_personne
 GROUP BY film.id_realisateur
 ORDER BY nb_film DESC;
   /*6-Casting d’un film en particulier (id_film) : nom, prénom des acteurs + sexe*/
+   SELECT film.titre, personne.nom_personne, personne.prenom_personne, personne.sexe
+ FROM casting
+ INNER JOIN film ON casting.id_film = film.id_film
+ INNER JOIN acteur ON casting.id_acteur = acteur.id_acteur
+ INNER JOIN personne ON acteur.id_personne = personne.id_personne
+ WHERE casting.id_film = 5;
 
   /*7-Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de 
 sortie (du film le plus récent au plus ancien)*/
