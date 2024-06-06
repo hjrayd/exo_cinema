@@ -50,6 +50,11 @@ sortie (du film le plus récent au plus ancien)*/
 
 
 /*8-Liste des personnes qui sont à la fois acteurs et réalisateurs*/
+SELECT personne.nom_personne, personne.prenom_personne
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+WHERE realisateur.id_personne = acteur.id_personne;
 
 /*9-Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)*/
 
