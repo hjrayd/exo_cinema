@@ -59,7 +59,7 @@ WHERE realisateur.id_personne = acteur.id_personne;
 /*9-Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)*/
 SELECT film.date_sortie, film.titre
 FROM film
-WHERE date_sortie < 2019
+WHERE date_sortie > YEAR(CURDATE()) - 5
 ORDER BY film.date_sortie DESC;
 
 /*10-Nombre d’hommes et de femmes parmi les acteurs*/
