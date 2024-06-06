@@ -11,18 +11,15 @@ FROM film
 WHERE duree > 135
 ORDER BY duree DESC;
  /*3-Liste des films d’un réalisateur (en précisant l’année de sortie)*/
-
+ SELECT film.titre, film.date_sortie ,personne.nom_personne,personne.prenom_personne
+    FROM film
+    INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+    INNER JOIN personne ON realisateur.id_personne = personne.id_personne
+    WHERE personne.id_personne = 6;
   /*4-Nombre de films par genre (classés dans l’ordre décroissant)*/
 
   /*5-Nombre de films par réalisateur (classés dans l’ordre décroissant)*/
-SELECT nom_personne, COUNT(id_film) AS nombre_film
-FROM personne
-INNER JOIN personne ON realisateur.id_personne = personne.id_personne
-INNER JOIN film ON realisateur.id_realisateur = film.id_realisateur
-GROUP BY
-    realisateur
-ORDER BY
-    nombre_film DESC;
+
   /*6-Casting d’un film en particulier (id_film) : nom, prénom des acteurs + sexe*/
 
   /*7-Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de 
