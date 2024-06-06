@@ -39,6 +39,15 @@ ORDER BY nb_film DESC;
 
   /*7-Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de 
 sortie (du film le plus récent au plus ancien)*/
+ SELECT personne.prenom_personne, personne.nom_personne, film.titre , film.date_sortie ,role.nom_role
+    FROM casting 
+    INNER JOIN acteur ON acteur.id_acteur = casting.id_acteur
+    INNER JOIN personne ON acteur.id_personne = personne.id_personne
+    INNER JOIN film ON  film.id_film = casting.id_film
+    INNER JOIN role ON role.id_role = casting.id_role
+    WHERE acteur.id_acteur =26
+    ORDER BY date_sortie DESC ;
+
 
 /*8-Liste des personnes qui sont à la fois acteurs et réalisateurs*/
 
