@@ -69,7 +69,9 @@ INNER JOIN personne ON acteur.id_personne = personne.id_personne
 GROUP BY personne.sexe;
 
 /*11-Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)*/
-
+SELECT personne.prenom_personne, personne.nom_personne, TIMESTAMPDIFF(YEAR, personne.date_naissance, CURDATE()) AS age
+FROM personne
+WHERE TIMESTAMPDIFF(YEAR, personne.date_naissance, CURDATE()) > 50
 /*12-Acteurs ayant joué dans 3 films ou plus*/
  SELECT personne.nom_personne, personne.prenom_personne , COUNT(casting.id_film) AS nb_film
     FROM casting 
