@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
-</head>
-<body>
-    <?php
-    
-    
-    ?>
-</body>
-</html>
+<?php
+
+use Controller\CinemaController;
+
+spl_autoload_register(function ($class_name) {
+    include $class_name . ' .php';
+});
+
+$ctrlCinema = new CinemaController();
+
+if(isset($_GET["action"])) {
+    switch ($_GET["action"]) {
+        case "listFilms" : $ctrlCinema->listFilms(); break;
+        case "listActeurs" : $ctrlCinema->listActeurs(); break;
+    }
+}
+?>
