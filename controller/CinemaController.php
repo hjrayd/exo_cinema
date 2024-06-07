@@ -58,9 +58,7 @@
             $requete = $pdo->prepare("
                 SELECT date_sortie, resume, duree, titre, note
                 FROM film
-               INNER JOIN realisateur ON  film.id_realisateur = realisateur.id_realisateur
-            INNER JOIN personne ON realisateur.id_personne= personne.id_personne 
-            INNER JOIN appartient ON film.id_film=  appartient.id_film 
+
                  WHERE id_film = :id
             ");
             $requete->execute(["id" => $id]);

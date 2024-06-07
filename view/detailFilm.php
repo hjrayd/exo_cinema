@@ -14,6 +14,7 @@ $film = $requete->fetch();
 
 
 
+
 <?php
 
 $titre = "Détail du film";
