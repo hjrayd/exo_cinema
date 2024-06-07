@@ -5,7 +5,7 @@
     class CinemaController {
         public function listFilms() {
             $pdo = Connect::seConnecter();
-            $requete = $pdo->query("SELECT titre, date_sortie FROM film");
+            $requete = $pdo->query("SELECT id_film, titre, date_sortie FROM film");
 
             require "view/listFilms.php";
         }
@@ -51,6 +51,21 @@
             ");
 
             require "view/listRoles.php";
+        }
+
+        public function detailFilm($id) {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->prepare("
+                SELECT date_sortie, resume, duree, titre, note
+                FROM film
+               INNER JOIN realisateur ON  film.id_realisateur = realisateur.id_realisateur
+            INNER JOIN personne ON realisateur.id_personne= personne.id_personne 
+            INNER JOIN appartient ON film.id_film=  appartient.id_film 
+                 WHERE id_film = :id
+            ");
+            $requete->execute(["id" => $id]);
+
+            require "view/detailFilm.php";
         }
 
     }
