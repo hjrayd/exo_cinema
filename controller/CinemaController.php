@@ -21,7 +21,7 @@
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne;
             ");
 
-            require "view/lisActeurs.php";
+            require "view/listActeurs.php";
         }
     }
 ?>
