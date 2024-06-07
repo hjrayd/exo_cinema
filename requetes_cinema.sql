@@ -112,7 +112,7 @@ INSERT INTO `film` (`id_film`, `titre`, `duree`, `resume`, `note`, `date_sortie`
 	(10, 'Seven', 130, 'Pour conclure sa carrière, l\'inspecteur Somerset, vieux flic blasé, tombe à sept jours de la retraite sur un criminel peu ordinaire. John Doe, c\'est ainsi que se fait appeler l\'assassin, a decidé de nettoyer la societé des maux qui la rongent en commettant sept meurtres basés sur les sept pechés capitaux: la gourmandise, l\'avarice, la paresse, l\'orgueil, la luxure, l\'envie et la colère.', 4.5, '1996', 'https://th.bing.com/th/id/OIP.Oiw_wuFjwBzGUNhecOUfUAHaJ4?pid=ImgDet&w=120&h=180&c=7', 6);
 
 -- Listage des données de la table cinema_hajar.genre : ~5 rows (environ)
-INSERT INTO `genre` (`id_genre`, `nomGenre`) VALUES
+INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(1, 'Drame'),
 	(2, 'Thriller'),
 	(3, 'Action'),
@@ -120,7 +120,7 @@ INSERT INTO `genre` (`id_genre`, `nomGenre`) VALUES
 	(5, 'Comédie');
 
 -- Listage des données de la table cinema_hajar.personne : ~33 rows (environ)
-INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `dateNaissance`, `sexe`) VALUES
+INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `date_naissance`, `sexe`) VALUES
 	(1, 'Tarantino', 'Quentin', '1963-03-27', 'Homme'),
 	(2, 'Cameron', 'James', '1954-08-16', 'Homme'),
 	(3, 'Eastwood', 'Clint', '1930-05-31', 'Homme'),
