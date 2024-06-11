@@ -9,7 +9,7 @@ $film = $requete->fetch();
 <p> Durée : <?= $film["duree"]?> minutes</p>
 <p> Note : <?= $film["note"]?>/5</p>
 <p> Résumé: <?= $film["resume"] ?></p>
-
+<P> Réalisateur: <a href="index.php?action=detailRealisateurs&id=<?= $film["prenom_personne"]?>"><?= $film["nom_personne"] ?></a>
 
 
 

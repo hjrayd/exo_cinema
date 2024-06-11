@@ -56,9 +56,10 @@
         public function detailFilm($id) {
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare("
-                SELECT date_sortie, resume, duree, titre, note
+                SELECT date_sortie, resume, duree, titre, note, prenom_personne, nom_personne
                 FROM film
-
+                INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+                INNER JOIN personne ON realisateur.id_personne = personne.id_personne
                  WHERE id_film = :id
             ");
             $requete->execute(["id" => $id]);
