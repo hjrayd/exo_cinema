@@ -78,6 +78,16 @@
             ");
             $requeteRealisateurs->execute(["id" => $id]);
 
+            $requeteFilms = $pdo->prepare("
+            SELECT film.titre, film.date_sortie, film.id_film
+            FROM film
+            INNER JOIN realisateur ON realisateur.id_realisateur = film.id_realisateur
+            WHERE realisateur.id_realisateur = :id
+         
+            ");
+            $requeteFilms->execute(["id" => $id]);
+            
+
             require "view/detailRealisateurs.php";
         }
 
