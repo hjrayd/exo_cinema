@@ -24,7 +24,7 @@
         public function listRealisateurs() {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
-           SELECT nom_personne, prenom_personne
+           SELECT nom_personne, prenom_personne, id_realisateur
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
             ");
@@ -70,7 +70,7 @@
         public function detailRealisateurs($id) {
             $pdo = Connect::seConnecter();
             $requeteRealisateurs = $pdo->prepare("
-                SELECT nom_personne, prenom_personne, sexe, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS nvlle_date
+                SELECT nom_personne, prenom_personne, sexe, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS nvlle_date, realisateur.id_realisateur
                 FROM personne
                 INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
                 WHERE id_realisateur = :id
@@ -79,7 +79,7 @@
             $requeteRealisateurs->execute(["id" => $id]);
 
             $requeteFilms = $pdo->prepare("
-            SELECT film.titre, film.date_sortie, film.id_film
+            SELECT film.titre, film.date_sortie, film.id_film, realisateur.id_realisateur
             FROM film
             INNER JOIN realisateur ON realisateur.id_realisateur = film.id_realisateur
             WHERE realisateur.id_realisateur = :id
