@@ -13,7 +13,7 @@
         public function listActeurs() {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
-           SELECT nom_personne, prenom_personne
+           SELECT nom_personne, prenom_personne, id_acteur
             FROM personne
             INNER JOIN acteur ON personne.id_personne = acteur.id_personne;
             ");
@@ -91,7 +91,31 @@
             require "view/detailRealisateurs.php";
         }
 
+        public function detailActeurs($id) {
+            $pdo = Connect::seConnecter();
+            $requeteActeurs = $pdo->prepare("
+            SELECT personne.nom_personne, personne.prenom_personne, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS nvlle_date, personne.sexe
+            FROM acteur
+            INNER JOIN personne ON acteur.id_personne = personne.id_personne
+            WHERE acteur.id_acteur = :id
+            ");
+
+            $requeteActeurs->execute(["id" => $id]);
+            
+            $requeteDetailActeurFilms = $pdo->prepare("
+            SELECT film.titre, role.nom_role, film.id_film
+            FROM casting
+            INNER JOIN acteur ON acteur.id_acteur = casting.id_acteur
+            INNER JOIN film  ON film.id_film = casting.id_film
+            INNER JOIN role  ON role.id_role = casting.id_role
+            WHERE casting.id_acteur = :id
+            
+            ");
+            $requeteDetailActeurFilms->execute(["id" => $id]);
+
+            require "view/detailActeurs.php";
     }
+}
 ?>
 
 
