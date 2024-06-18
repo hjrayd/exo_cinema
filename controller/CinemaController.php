@@ -45,9 +45,9 @@
         public function listRoles() {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
-         SELECT nom_role
+         SELECT nom_role, id_role
         FROM role
-        INNER JOIN casting ON role.id_role = casting.id_role
+        
             ");
 
             require "view/listRoles.php";
@@ -114,6 +114,30 @@
             $requeteDetailActeurFilms->execute(["id" => $id]);
 
             require "view/detailActeurs.php";
+    }
+
+    public function detailRoles($id) {
+
+        $pdo = Connect::seConnecter();
+        $requeteRole = $pdo->prepare("
+            SELECT nom_role
+            FROM role
+            WHERE id_role = :id
+        ");
+        $requeteRole->execute(["id" => $id]);
+
+        $requeteRoles = $pdo->prepare("
+        SELECT personne.prenom_personne, personne.nom_personne, film.titre, film.date_sortie, film.id_film, casting.id_acteur
+        FROM casting
+        INNER JOIN acteur ON acteur.id_acteur = casting.id_acteur
+        INNER JOIN film ON film.id_film = casting.id_film
+        INNER JOIN personne ON personne.id_personne = acteur.id_personne
+        WHERE casting.id_role = :id
+       
+        ");
+        $requeteRoles->execute(["id" => $id]);
+
+        require "view/detailRoles.php";
     }
 }
 ?>
