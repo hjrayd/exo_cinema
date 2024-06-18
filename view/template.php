@@ -15,6 +15,7 @@
             <li><a href="index.php?action=listGenres">Genres</a></li>
             <li><a href="index.php?action=listRoles">Rôles</a></li>
             <li><a href="index.php?action=addActeur">Ajouter un acteur</a></li>
+            <li><a href="index.php?action=addRole">Ajouter un rôle</a></li>
            
         </ul>
     </nav>

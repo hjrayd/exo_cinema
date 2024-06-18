@@ -172,6 +172,24 @@
         }
         require "view/addActeur.php";
     }
+
+    public function addRole() {
+        if(isset($_POST['submit'])){
+            $name = filter_input(INPUT_POST, "nom_role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->prepare("
+                INSERT INTO role (nom_role) VALUES
+                (:nom_role);
+            ");
+            $requete->execute([
+                "nom_role" => $name
+            ]);
+
+            header("Location: index.php?action=listRoles");
+
+        }
+        require "view/addRole.php";
+    }
 }
 ?>
 
