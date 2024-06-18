@@ -190,6 +190,25 @@
         }
         require "view/addRole.php";
     }
+
+    public function addGenre() {
+        if(isset($_POST['submit'])){
+           
+            $name = filter_input(INPUT_POST, "nom_genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->prepare("
+                INSERT INTO genre (nom_genre) VALUES
+                (:nom_genre);
+            ");
+            $requete->execute([
+                "nom_genre" => $name
+            ]);
+
+            header("Location: index.php?action=listGenres");
+
+        }
+        require "view/addGenre.php";
+    }
 }
 ?>
 
