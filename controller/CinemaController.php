@@ -139,6 +139,39 @@
 
         require "view/detailRoles.php";
     }
+
+    public function addActeur() {
+        if(isset($_POST['submit'])){
+            
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $date_naissance = filter_input(INPUT_POST, "date_naissance");
+            $pdo = Connect::seConnecter();
+            $requete1 = $pdo->prepare("
+                INSERT INTO personne (nom_personne, prenom_personne, sexe, date_naissance) VALUES
+                (:nom, :prenom, :sexe, :date_naissance);
+            ");
+            $requete1->execute([
+                "nom" => $nom, "prenom" => $prenom, "sexe" => $sexe, "date_naissance" => $date_naissance
+            ]);
+
+            $last_id = $pdo->lastInsertId();
+
+            $requete2 = $pdo->prepare("
+                INSERT INTO acteur (id_personne) VALUES  
+                (:id_personne)
+            ");
+            
+            $requete2->execute([
+                ':id_personne' => $last_id
+            ]);
+
+            header("Location: index.php?action=listActeurs");
+
+        }
+        require "view/addActeur.php";
+    }
 }
 ?>
 

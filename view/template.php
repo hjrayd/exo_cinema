@@ -14,6 +14,7 @@
             <li><a href="index.php?action=listRealisateurs">Realisateurs</a></li>
             <li><a href="index.php?action=listGenres">Genres</a></li>
             <li><a href="index.php?action=listRoles">Rôles</a></li>
+            <li><a href="index.php?action=addActeur">Ajouter un acteur</a></li>
            
         </ul>
     </nav>
