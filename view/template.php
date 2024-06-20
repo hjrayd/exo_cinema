@@ -11,12 +11,13 @@
         <ul>
             <li><a href="index.php?action=listFilms">Films</a></li>
             <li><a href="index.php?action=listActeurs">Acteurs</a></li>
-            <li><a href="index.php?action=listRealisateurs">Realisateurs</a></li>
+            <li><a href="index.php?action=listRealisateurs">Réalisateurs</a></li>
             <li><a href="index.php?action=listGenres">Genres</a></li>
             <li><a href="index.php?action=listRoles">Rôles</a></li>
             <li><a href="index.php?action=addActeur">Ajouter un acteur</a></li>
             <li><a href="index.php?action=addRole">Ajouter un rôle</a></li>
             <li><a href="index.php?action=addGenre">Ajouter un genre</a></li>
+            <li><a href="index.php?action=addFilm">Ajouter un film</a></li>
         </ul>
     </nav>
 

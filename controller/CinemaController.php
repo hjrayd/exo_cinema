@@ -209,6 +209,68 @@
         }
         require "view/addGenre.php";
     }
+
+    public function addFilm() {
+        $pdo = Connect::seConnecter();
+
+        if(isset($_POST['submit'])){
+            
+            $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $date_sortie  = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
+            $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+            $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
+            $genres = filter_input(INPUT_POST, "genres", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+        
+
+            $requeteFilm = $pdo->prepare("
+                INSERT INTO film (titre, date_sortie, resume, duree, note, id_realisateur)
+                VALUES (:titre, :date_sortie, :resume, :duree, :note, :realisateur)
+            ");
+            $requeteFilm->execute([
+                "titre" => $titre,
+                "date_sortie" => $date_sortie,
+                "resume" => $resume,
+                "duree" => $duree,
+                "note" => $note,
+                "realisateur" => $realisateur
+            ]);
+
+            $last_id = $pdo->lastInsertId();
+            
+            
+            $requeteGenreFilm = $pdo->prepare("
+                INSERT INTO appartient (id_film, id_genre)
+                VALUES (:id_film, :id_genre)
+            ");
+            foreach ($genres as $genre) {
+                $requeteGenreFilm->execute([
+                    "id_film" => $last_id,
+                    "id_genre" => $genre
+                ]);
+            }
+            
+
+            header("Location: index.php?action=listFilms");
+
+        }
+
+        $requeteRealisateur = $pdo->prepare("
+            SELECT *
+            FROM realisateur
+            INNER JOIN personne  ON realisateur.id_personne = personne.id_personne");
+
+        $requeteRealisateur->execute();
+
+        $requeteGenre = $pdo->prepare("
+            SELECT *
+            FROM genre");
+
+        $requeteGenre->execute();
+
+        require "view/addFilm.php";
+    }
 }
 ?>
 
