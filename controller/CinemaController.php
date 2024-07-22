@@ -265,7 +265,7 @@
 
         $requeteGenre = $pdo->prepare("
             SELECT *
-            FROM genre");
+            FROM genre ");
 
         $requeteGenre->execute();
 

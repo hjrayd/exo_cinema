@@ -4,7 +4,8 @@ ob_start();
 ?>
 
         <form action="index.php?action=addRole" method="post">
-            <p> Informations du rôle:<br> 
+            <p> Informations du rôle: <br> 
+            
                 <label>
                     Nom du rôle:
                     <input type="text" name="nom_role">
