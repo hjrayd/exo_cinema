@@ -25,9 +25,10 @@
     </nav>
 
     <main>
-        <h1>Accueil</h1>
+        
         <h2><?= $titre_secondaire ?></h2>
         <?= $contenu ?>
     </main>
 </body>
+
 </html>

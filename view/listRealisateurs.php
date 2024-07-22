@@ -2,11 +2,11 @@
 
 <p> Il y a <?=$requete->rowCount() ?> réalisateurs </p>
 
-<table>
+<table class="table">
     <thead>
         <tr>
-           <th>PRENOM</th>
-           <th>NOM</th>
+           <th scope="col">PRENOM</th>
+           <th scope="col">NOM</th>
         </tr>
     </thead>
     <tbody>
