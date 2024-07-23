@@ -151,24 +151,18 @@
         ");
         $requeteDetailGenre->execute(["id" => $id]);
 
-        $requeteDetailgenres = $pdo->prepare("
+        $requeteDetailGenres = $pdo->prepare("
         SELECT film.titre, genre.nom_genre, genre.id_genre, film.id_film
         FROM film
         INNER JOIN appartient ON appartient.id_film = film.id_film
-        INNER JOIN genre ON genre.id_genre = apaprtient.id_genre
+        INNER JOIN genre ON genre.id_genre = appartient.id_genre
         WHERE genre.id_genre = :id
-     
         ");
         $requeteDetailGenres->execute(["id" => $id]);
         
 
         require "view/detailGenre.php";
     }
-
-
-
-
-
 
     public function addActeur() {
         if(isset($_POST['submit'])){

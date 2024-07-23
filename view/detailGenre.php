@@ -2,7 +2,7 @@
 <?php ob_start();?>
 
 <?php
-    foreach($requeteDetailgenre->fetchAll() as $genre){ ?>
+    foreach($requeteDetailGenre->fetchAll() as $genre){ ?>
         <p> Nom du genre: <?=$genre["nom_genre"]?>
        
         <?php } ?>
@@ -16,7 +16,7 @@
             </thead>
         <tbody>
 <?php
-            foreach($requeteDetailgenres->fetchAll() as $genres){ ?>
+            foreach($requeteDetailGenres->fetchAll() as $genres){ ?>
             <tr>
                 <td><a href="index.php?action=detailFilm&id=<?=$genres["id_film"]?>"><?= $genres["titre"]?></a></td>
            
