@@ -35,7 +35,7 @@
         public function listGenres() {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
-           SELECT nom_genre
+           SELECT nom_genre, id_genre
             FROM genre
             ");
 
@@ -140,28 +140,32 @@
         require "view/detailRoles.php";
     }
 
-    public function detailGenres($id) {
+
+    public function detailGenre($id) {
         $pdo = Connect::seConnecter();
         $requeteDetailGenre = $pdo->prepare("
-            SELECT nom_genre
+            SELECT nom_genre, id_genre
             FROM genre
             WHERE id_genre = :id
+           
         ");
         $requeteDetailGenre->execute(["id" => $id]);
 
-        $requeteDetailGenres = $pdo->prepare ("
-        SELECT  genre.nom_genre, film.titre,  film.id_film, genre.id_genre
+        $requeteDetailgenres = $pdo->prepare("
+        SELECT film.titre, genre.nom_genre, genre.id_genre, film.id_film
         FROM film
-        INNER JOIN appartient ON film.id_film = appartient.id_film 
-        INNER JOIN genre ON appartient.id_genre = genre.id_genre
+        INNER JOIN appartient ON appartient.id_film = film.id_film
+        INNER JOIN genre ON genre.id_genre = apaprtient.id_genre
         WHERE genre.id_genre = :id
+     
         ");
-
         $requeteDetailGenres->execute(["id" => $id]);
-
+        
 
         require "view/detailGenre.php";
     }
+
+
 
 
 
