@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 ob_start(); 
 ?>
 
@@ -13,7 +13,7 @@ ob_start();
             </p>
             
             <p>
-                <input type="submit" name="submit" value="Ajouter le rôle">
+                <input class="btn" type="submit" name="submit" value="Ajouter le rôle">
             </p>
 
         </form>

@@ -55,7 +55,7 @@ ob_start();
             </p>
             
             <p>
-                <input type="submit" name="submit" value="Ajouter le film">
+                <input class="btn" type="submit" name="submit" value="Ajouter le film">
             </p>
             
 

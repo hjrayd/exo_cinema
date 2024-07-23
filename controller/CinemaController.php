@@ -140,6 +140,32 @@
         require "view/detailRoles.php";
     }
 
+    public function detailGenres($id) {
+        $pdo = Connect::seConnecter();
+        $requeteDetailGenre = $pdo->prepare("
+            SELECT nom_genre
+            FROM genre
+            WHERE id_genre = :id
+        ");
+        $requeteDetailGenre->execute(["id" => $id]);
+
+        $requeteDetailGenres = $pdo->prepare ("
+        SELECT  genre.nom_genre, film.titre,  film.id_film, genre.id_genre
+        FROM film
+        INNER JOIN appartient ON film.id_film = appartient.id_film 
+        INNER JOIN genre ON appartient.id_genre = genre.id_genre
+        WHERE genre.id_genre = :id
+        ");
+
+        $requeteDetailGenres->execute(["id" => $id]);
+
+
+        require "view/detailGenre.php";
+    }
+
+
+
+
     public function addActeur() {
         if(isset($_POST['submit'])){
             

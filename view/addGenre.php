@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 ob_start(); 
 ?>
 
@@ -10,8 +10,8 @@ ob_start();
                     <input type="text" name="nom_genre">
                 </label>
             </p>
-            <p>
-                <input type="submit" name="submit" value="Ajouter le genre">
+            <p >
+                <input class="btn" type="submit" name="submit" value="Ajouter le genre">
             </p>
 
         </form>

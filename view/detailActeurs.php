@@ -1,4 +1,8 @@
-<?php ob_start();?>
+<?php 
+
+ob_start(); 
+?>
+
 
 <?php
     foreach($requeteActeurs->fetchAll() as $acteur){ ?>
