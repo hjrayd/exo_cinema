@@ -3,6 +3,16 @@
     use Model\Connect;
 
     class CinemaController {
+
+        public function accueil() {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query("SELECT id_film, titre, note FROM film
+            ORDER BY note DESC
+            LIMIT 3");
+
+            require "view/accueil.php";
+        }
+
         public function listFilms() {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("SELECT id_film, titre, date_sortie FROM film");

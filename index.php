@@ -11,6 +11,7 @@ $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])) {
     switch ($_GET["action"]) {
+        case "accueil" : $ctrlCinema->accueil(); break;
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "listActeurs" : $ctrlCinema->listActeurs(); break;
         case "listRealisateurs" : $ctrlCinema->listRealisateurs(); break;
@@ -26,6 +27,7 @@ if(isset($_GET["action"])) {
         case "addGenre" : $ctrlCinema->addGenre(); break;
         case "addFilm" : $ctrlCinema->addFilm(); break;
     }
+    
 } else {
     $ctrlCinema->listFilms(); 
 }
