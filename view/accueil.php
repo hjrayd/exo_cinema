@@ -8,8 +8,21 @@ ob_start();
 <?php
 
 foreach($requete->fetchAll() as $note) { ?>
-   <a href="index.php?action=accueil&id=<?= $note["id_film"] ?>"><?= $note["titre"] ?>
-      <?= $note["note"] ?>
+   <a href="index.php?action=detailFilm&id=<?= $note["id_film"] ?>"><?= $note["titre"] ?></a>
+     <p> <?= $note["note"] ?> <p>
+ 
+<?php } ?>
+
+<!--Mettre image en dessous du titre de chaque film-->
+
+<h2> Nouveautés </h2>
+
+
+<?php
+
+foreach($requetee->fetchAll() as $nouveaute) { ?>
+   <a href="index.php?action=detailFilm&id=<?= $nouveaute["id_film"] ?>"><?= $nouveaute["titre"] ?></a>
+      
    
 <?php } ?>
 

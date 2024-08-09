@@ -10,6 +10,9 @@
             ORDER BY note DESC
             LIMIT 3");
 
+            $requetee = $pdo->query("SELECT id_film, titre, date_sortie FROM film
+            ORDER BY date_sortie DESC
+            LIMIT 3");
             require "view/accueil.php";
         }
 
