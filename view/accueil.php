@@ -5,12 +5,13 @@ ob_start();
 
 <h2> A l'affiche</h2>
 
+
 <?php
 
 foreach($requete->fetchAll() as $note) { ?>
    <a href="index.php?action=detailFilm&id=<?= $note["id_film"] ?>"><?= $note["titre"] ?></a>
      <p> <?= $note["note"] ?> <p>
- 
+
 <?php } ?>
 
 <!--Mettre image en dessous du titre de chaque film-->
@@ -25,6 +26,8 @@ foreach($requetee->fetchAll() as $nouveaute) { ?>
       
    
 <?php } ?>
+
+
 
 <?php
 

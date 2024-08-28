@@ -13,9 +13,11 @@ nav {
 a {
     text-decoration: none;
     font-family: "Poppins", sans-serif;
-    
+    align-items: center;
+}
 
-
+a:visited {
+    text-decoration: none;
 }
 p {
     font-family: "Poppins", sans-serif;
@@ -55,6 +57,7 @@ th, h2 {
     padding-right: 20px;
     padding-left: 20px;
   }
+
 
 
 
