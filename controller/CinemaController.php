@@ -273,10 +273,7 @@
                 "note" => $note,
                 "realisateur" => $realisateur
             ]);
-
-            $last_id = $pdo->lastInsertId();
-            
-            
+              
             $requeteGenreFilm = $pdo->prepare("
                 INSERT INTO appartient (id_film, id_genre)
                 VALUES (:id_film, :id_genre)
