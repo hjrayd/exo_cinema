@@ -14,6 +14,7 @@ a {
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     align-items: center;
+    color: inherit;
 }
 
 a:visited {

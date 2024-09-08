@@ -7,18 +7,10 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;
-    
+    flex-direction: row;   
 }
-
-
-a {
-    color: inherit;
-}
-
 
 .titre  a {
-    
     font-size: 35px;
     font-weight: 300;
 }
@@ -32,10 +24,8 @@ a {
 }
 
 .nouveautes a {
-    font-size: 35px;
-    font-weight: 300;
+    font-size: 60px;
+    font-weight: 600;
 }
 
-p  {
-    
-}
+
