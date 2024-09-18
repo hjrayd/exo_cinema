@@ -22,6 +22,9 @@
     <div class="button">
         <button><a href="index.php?action=addActeur">Ajouter un acteur</a></button>
     </div>
+    <div class="button">
+        <button><a href="index.php?action=addCasting">Associer un acteur</a></button>
+    </div>
 <?php
 
 $titre = "Liste des acteurs";

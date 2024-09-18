@@ -335,10 +335,53 @@
             header("Location: index.php?action=listRealisateurs");
 
         }
-        require "view/addREalisateur.php";
+        require "view/addRealisateur.php";
+    }
+
+    public function addCasting() {
+
+        $pdo = Connect::seConnecter();
+        $requeteFilmCasting = $pdo->query("SELECT film.id_film, film.titre FROM film");
+        $requeteFilmCasting->execute();
+        $requeteActeurCasting = $pdo->query("SELECT acteur.id_acteur , personne.prenom_personne, personne.nom_personne
+        FROM personne
+        INNER JOIN acteur 
+        ON acteur.id_personne = personne.id_personne"
+                                                     );
+        $requeteRoleCasting = $pdo->query("SELECT id_role, role.nom_role FROM role");
+        $requeteRoleCasting->execute();
+        
+       
+        $requeteActeurCasting->execute();
+        if(isset($_POST['submit'])){
+            $film = filter_input(INPUT_POST, "film", FILTER_SANITIZE_NUMBER_INT);
+            $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_NUMBER_INT);
+            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_NUMBER_INT);
+            
+            $requeteCasting = $pdo->prepare("
+               INSERT INTO casting (id_film, id_acteur, id_role)
+                VALUES (:film, :acteur, role);
+            ");
+
+            $requeteCasting->execute([
+                "film" => $film,
+                "acteur" => $acteur,
+                "role" => $role
+                
+            ]);
+       
+        
+
+        
+
+            header("Location: index.php?action=listActeur");
+            }
+            require "view/addCasting.php";
+            
+        }
     }
    
-}
+
 ?>
 
 
