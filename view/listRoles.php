@@ -18,7 +18,9 @@
         <?php } ?>
     </tbody>
 </table>
-
+<div class="button">
+    <button><a href="index.php?action=addRole">Ajouter un rôle</a></button>
+</div>
 <?php
 
 $titre = "Liste des rôles";

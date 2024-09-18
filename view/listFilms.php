@@ -19,7 +19,9 @@
         <?php } ?>
     </tbody>
 </table>
-
+    <div class="button">
+        <button><a href="index.php?action=addFilm">Ajouter un film</a></button>
+    </div>
 <?php
 
 $titre = "Liste des films";

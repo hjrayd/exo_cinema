@@ -59,6 +59,29 @@ th, h2 {
     padding-left: 20px;
   }
 
+  button {
+    border-radius: 20px;
+   padding: 10px;
+   border: 1px solid;
+   margin-top: 30px;
+  }
+
+  .button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  button:hover {
+    filter: brightness(0.9);
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+
+
+
 
 
 

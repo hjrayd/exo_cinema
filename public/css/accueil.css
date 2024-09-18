@@ -7,25 +7,26 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;   
+    flex-direction: row; 
 }
 
 .titre  a {
     font-size: 35px;
     font-weight: 300;
+   
 }
 
 .nouveautes {
     display: flex;
-    padding-top: 40Px;
+    padding-top: 40px;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
 }
 
 .nouveautes a {
-    font-size: 60px;
-    font-weight: 600;
+    font-size: 35px;
+    font-weight: 300;
 }
 
 

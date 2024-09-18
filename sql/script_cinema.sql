@@ -14,6 +14,20 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Listage de la structure de la base pour cinema_hajar
+CREATE DATABASE IF NOT EXISTS `cinema_hajar` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cinema_hajar`;
+
+ 
+-- Listage de la structure de table cinema_hajar. acteur
+CREATE TABLE IF NOT EXISTS `acteur` (
+  `id_acteur` int NOT NULL AUTO_INCREMENT,
+  `id_personne` int NOT NULL,
+  PRIMARY KEY (`id_acteur`),
+  KEY `id_personne` (`id_personne`),
+  CONSTRAINT `FK_acteur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- Listage des données de la table cinema_hajar.acteur : ~29 rows (environ)
 INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(2, 1),
@@ -45,6 +59,17 @@ INSERT INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(27, 31),
 	(28, 32),
 	(29, 33);
+	
+-- Listage de la structure de table cinema_hajar. appartient
+CREATE TABLE IF NOT EXISTS `appartient` (
+  `id_film` int NOT NULL,
+  `id_genre` int NOT NULL,
+  KEY `id_film` (`id_film`),
+  KEY `id_genre` (`id_genre`),
+  CONSTRAINT `FK_appartient_film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
+  CONSTRAINT `FK_appartient_genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 -- Listage des données de la table cinema_hajar.appartient : ~15 rows (environ)
 INSERT INTO `appartient` (`id_film`, `id_genre`) VALUES
@@ -63,6 +88,20 @@ INSERT INTO `appartient` (`id_film`, `id_genre`) VALUES
 	(9, 3),
 	(10, 2),
 	(10, 1);
+	
+	
+-- Listage de la structure de table cinema_hajar. casting
+CREATE TABLE IF NOT EXISTS `casting` (
+  `id_film` int NOT NULL,
+  `id_acteur` int NOT NULL,
+  `id_role` int NOT NULL,
+  KEY `id_film` (`id_film`),
+  KEY `id_acteur` (`id_acteur`),
+  KEY `id_role` (`id_role`),
+  CONSTRAINT `FK_casting_acteur` FOREIGN KEY (`id_acteur`) REFERENCES `acteur` (`id_acteur`),
+  CONSTRAINT `FK_casting_film` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`),
+  CONSTRAINT `FK_casting_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema_hajar.casting : ~31 rows (environ)
 INSERT INTO `casting` (`id_film`, `id_acteur`, `id_role`) VALUES
@@ -98,6 +137,23 @@ INSERT INTO `casting` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(10, 28, 29),
 	(10, 29, 30);
 
+
+-- Listage de la structure de table cinema_hajar. film
+CREATE TABLE IF NOT EXISTS `film` (
+  `id_film` int NOT NULL AUTO_INCREMENT,
+  `titre` varchar(50) NOT NULL DEFAULT '0',
+  `duree` int NOT NULL DEFAULT '0',
+  `resume` text,
+  `note` float DEFAULT NULL,
+  `date_sortie` int DEFAULT NULL,
+  `afficheFilm` varchar(50) DEFAULT NULL,
+  `id_realisateur` int NOT NULL,
+  PRIMARY KEY (`id_film`),
+  KEY `id_realisateur` (`id_realisateur`),
+  CONSTRAINT `FK_film_realisateur` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 -- Listage des données de la table cinema_hajar.film : ~10 rows (environ)
 INSERT INTO `film` (`id_film`, `titre`, `duree`, `resume`, `note`, `date_sortie`, `afficheFilm`, `id_realisateur`) VALUES
 	(1, 'Kill Bill', 111, 'Au cours d\'une cérémonie de mariage en plein désert, un commando fait irruption dans la chapelle et tire sur les convives. Laissée pour morte, la Mariée enceinte retrouve ses esprits après un coma de quatre ans. Celle qui a auparavant exercé les fonctions de tueuse à gages au sein du Détachement International des Vipères Assassines n\'a alors plus qu\'une seule idée en tête : venger la mort de ses proches en éliminant tous les membres de l\'organisation criminelle, dont leur chef Bill qu\'elle se réserve pour la fin.', 4, '2003', 'https://th.bing.com/th/id/OIP.QRoYUipqebs6BA7urEIoUgHaLH?pid=ImgDet&w=120&h=180&c=7', 1),
@@ -111,6 +167,15 @@ INSERT INTO `film` (`id_film`, `titre`, `duree`, `resume`, `note`, `date_sortie`
 	(9, 'Fight club', 139, 'Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux-repas pour une personne comme beaucoup d\'autres personnes seules qui connaissent la misère humaine, morale et sexuelle. C\'est pourquoi il va devenir membre du Fight club, un lieu clandestin ou il va pouvoir retrouver sa virilité, l\'échange et la communication. Ce club est dirigé par Tyler Durden, une sorte d\'anarchiste entre gourou et philosophe qui prêche l\'amour de son prochain.', 4.5, '1999', 'https://th.bing.com/th/id/OIP.GGzj_iHbeurTqIEcNGIEdwAAAA?pid=ImgDet&w=120.375&h=180&c=7', 6),
 	(10, 'Seven', 130, 'Pour conclure sa carrière, l\'inspecteur Somerset, vieux flic blasé, tombe à sept jours de la retraite sur un criminel peu ordinaire. John Doe, c\'est ainsi que se fait appeler l\'assassin, a decidé de nettoyer la societé des maux qui la rongent en commettant sept meurtres basés sur les sept pechés capitaux: la gourmandise, l\'avarice, la paresse, l\'orgueil, la luxure, l\'envie et la colère.', 4.5, '1996', 'https://th.bing.com/th/id/OIP.Oiw_wuFjwBzGUNhecOUfUAHaJ4?pid=ImgDet&w=120&h=180&c=7', 6);
 
+
+-- Listage de la structure de table cinema_hajar. genre
+CREATE TABLE IF NOT EXISTS `genre` (
+  `id_genre` int NOT NULL AUTO_INCREMENT,
+  `nom_genre` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_genre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 -- Listage des données de la table cinema_hajar.genre : ~5 rows (environ)
 INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(1, 'Drame'),
@@ -118,6 +183,16 @@ INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 	(3, 'Action'),
 	(4, 'Science-fiction'),
 	(5, 'Comédie');
+
+-- Listage de la structure de table cinema_hajar. personne
+CREATE TABLE IF NOT EXISTS `personne` (
+  `id_personne` int NOT NULL AUTO_INCREMENT,
+  `nom_personne` varchar(50) NOT NULL,
+  `prenom_personne` varchar(50) NOT NULL,
+  `date_naissance` datetime NOT NULL,
+  `sexe` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_personne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema_hajar.personne : ~33 rows (environ)
 INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `date_naissance`, `sexe`) VALUES
@@ -155,6 +230,16 @@ INSERT INTO `personne` (`id_personne`, `nom_personne`, `prenom_personne`, `date_
 	(32, 'Freeman', 'Morgan', '1937-06-01', 'Homme'),
 	(33, 'Spacey', 'Kevin', '1959-07-26', 'Homme');
 
+-- Listage de la structure de table cinema_hajar. realisateur
+CREATE TABLE IF NOT EXISTS `realisateur` (
+  `id_realisateur` int NOT NULL AUTO_INCREMENT,
+  `id_personne` int NOT NULL,
+  PRIMARY KEY (`id_realisateur`),
+  KEY `id_personne` (`id_personne`),
+  CONSTRAINT `FK_realisateur_personne` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ 
+ 
 -- Listage des données de la table cinema_hajar.realisateur : ~6 rows (environ)
 INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(1, 1),
@@ -163,6 +248,13 @@ INSERT INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(4, 4),
 	(5, 5),
 	(6, 6);
+
+-- Listage de la structure de table cinema_hajar. role
+CREATE TABLE IF NOT EXISTS `role` (
+  `id_role` int NOT NULL AUTO_INCREMENT,
+  `nom_role` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_role`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema_hajar.role : ~31 rows (environ)
 INSERT INTO `role` (`id_role`, `nom_role`) VALUES
