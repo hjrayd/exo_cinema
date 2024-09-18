@@ -62,8 +62,9 @@ th, h2 {
   button {
     border-radius: 20px;
    padding: 10px;
-   border: 1px solid;
+   border: 0.5px solid grey;
    margin-top: 30px;
+   transition: 0.9s;
   }
 
   .button {
@@ -77,6 +78,7 @@ th, h2 {
     filter: brightness(0.9);
     border: none;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.9s;
   }
 
 

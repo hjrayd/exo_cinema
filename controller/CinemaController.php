@@ -305,6 +305,39 @@
 
         require "view/addFilm.php";
     }
+    public function addRealisateur() {
+        if(isset($_POST['submit'])){
+            
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $date_naissance = filter_input(INPUT_POST, "date_naissance");
+            $pdo = Connect::seConnecter();
+            $requeteReal = $pdo->prepare("
+                INSERT INTO personne (nom_personne, prenom_personne, sexe, date_naissance) VALUES
+                (:nom, :prenom, :sexe, :date_naissance);
+            ");
+            $requeteReal->execute([
+                "nom" => $nom, "prenom" => $prenom, "sexe" => $sexe, "date_naissance" => $date_naissance
+            ]);
+
+            $last_id = $pdo->lastInsertId();
+
+            $requeteReali = $pdo->prepare("
+                INSERT INTO realisateur (id_personne) VALUES  
+                (:id_personne)
+            ");
+            
+            $requeteReali->execute([
+                ':id_personne' => $last_id
+            ]);
+
+            header("Location: index.php?action=listRealisateurs");
+
+        }
+        require "view/addREalisateur.php";
+    }
+   
 }
 ?>
 
