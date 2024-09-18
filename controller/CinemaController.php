@@ -251,6 +251,7 @@
         $pdo = Connect::seConnecter();
 
         if(isset($_POST['submit'])){
+
             
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_sortie  = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
@@ -262,8 +263,8 @@
         
 
             $requeteFilm = $pdo->prepare("
-                INSERT INTO film (titre, date_sortie, resume, duree, note, id_realisateur)
-                VALUES (:titre, :date_sortie, :resume, :duree, :note, :realisateur)
+                INSERT INTO film (titre, duree, resume, note, date_sortie, id_realisateur)
+                VALUES (:titre, :duree, :resume, :note, :date_sortie, :realisateur)
             ");
             $requeteFilm->execute([
                 "titre" => $titre,
@@ -273,21 +274,20 @@
                 "note" => $note,
                 "realisateur" => $realisateur
             ]);
-              
+
+            $id_film = $pdo -> lastInsertId();
+
             $requeteGenreFilm = $pdo->prepare("
                 INSERT INTO appartient (id_film, id_genre)
                 VALUES (:id_film, :id_genre)
             ");
             foreach ($genres as $genre) {
                 $requeteGenreFilm->execute([
-                    "id_film" => $last_id,
+                    "id_film" => $id_film,
                     "id_genre" => $genre
                 ]);
             }
-            
-
             header("Location: index.php?action=listFilms");
-
         }
 
         $requeteRealisateur = $pdo->prepare("
@@ -367,13 +367,8 @@
                 "film" => $film,
                 "acteur" => $acteur,
                 "role" => $role
-                
             ]);
-       
-        
-
-        
-
+            
             header("Location: index.php?action=listActeur");
             }
             require "view/addCasting.php";
