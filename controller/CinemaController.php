@@ -3,8 +3,8 @@
     use Model\Connect;
 
     class CinemaController {
-
-        public function accueil() {
+        public function accueil() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("SELECT id_film, titre, note FROM film
             ORDER BY note DESC
@@ -16,14 +16,16 @@
             require "view/accueil.php";
         }
 
-        public function listFilms() {
+        public function listFilms() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("SELECT id_film, titre, date_sortie FROM film");
 
             require "view/listFilms.php";
         }
 
-        public function listActeurs() {
+        public function listActeurs() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
            SELECT nom_personne, prenom_personne, id_acteur
@@ -34,7 +36,8 @@
             require "view/listActeurs.php";
         }
 
-        public function listRealisateurs() {
+        public function listRealisateurs() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
            SELECT nom_personne, prenom_personne, id_realisateur
@@ -45,7 +48,8 @@
             require "view/listRealisateurs.php";
         }
 
-        public function listGenres() {
+        public function listGenres() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
            SELECT nom_genre, id_genre
@@ -55,7 +59,8 @@
             require "view/listGenres.php";
         }
 
-        public function listRoles() {
+        public function listRoles() 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query("
          SELECT nom_role, id_role
@@ -66,7 +71,8 @@
             require "view/listRoles.php";
         }
 
-        public function detailFilm($id) {
+        public function detailFilm($id) 
+        {
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare("
                 SELECT date_sortie, resume, duree, titre, note, prenom_personne, nom_personne, realisateur.id_realisateur
@@ -80,7 +86,8 @@
             require "view/detailFilm.php";
         }
 
-        public function detailRealisateurs($id) {
+        public function detailRealisateurs($id) 
+        {
             $pdo = Connect::seConnecter();
             $requeteRealisateurs = $pdo->prepare("
                 SELECT nom_personne, prenom_personne, sexe, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS nvlle_date, realisateur.id_realisateur
@@ -104,7 +111,8 @@
             require "view/detailRealisateurs.php";
         }
 
-        public function detailActeurs($id) {
+        public function detailActeurs($id) 
+        {
             $pdo = Connect::seConnecter();
             $requeteActeurs = $pdo->prepare("
             SELECT personne.nom_personne, personne.prenom_personne, DATE_FORMAT(date_naissance, '%d/%m/%Y') AS nvlle_date, personne.sexe
@@ -127,9 +135,10 @@
             $requeteDetailActeurFilms->execute(["id" => $id]);
 
             require "view/detailActeurs.php";
-    }
+        }
 
-    public function detailRoles($id) {
+    public function detailRoles($id) 
+    {
 
         $pdo = Connect::seConnecter();
         $requeteRole = $pdo->prepare("
@@ -154,7 +163,8 @@
     }
 
 
-    public function detailGenre($id) {
+    public function detailGenre($id) 
+    {
         $pdo = Connect::seConnecter();
         $requeteDetailGenre = $pdo->prepare("
             SELECT nom_genre, id_genre
@@ -177,9 +187,10 @@
         require "view/detailGenre.php";
     }
 
-    public function addActeur() {
-        if(isset($_POST['submit'])){
-            
+    public function addActeur() 
+    {
+        if(isset($_POST['submit']))
+        { 
             $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -207,11 +218,14 @@
             header("Location: index.php?action=listActeurs");
 
         }
+
         require "view/addActeur.php";
     }
 
-    public function addRole() {
-        if(isset($_POST['submit'])){
+    public function addRole() 
+    {
+        if(isset($_POST['submit']))
+        {
             $name = filter_input(INPUT_POST, "nom_role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare("
@@ -228,8 +242,10 @@
         require "view/addRole.php";
     }
 
-    public function addGenre() {
-        if(isset($_POST['submit'])){
+    public function addGenre() 
+    {
+        if(isset($_POST['submit']))
+        {
            
             $name = filter_input(INPUT_POST, "nom_genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $pdo = Connect::seConnecter();
@@ -247,7 +263,8 @@
         require "view/addGenre.php";
     }
 
-    public function addFilm() {
+    public function addFilm() 
+    {
         $pdo = Connect::seConnecter();
 
         $requeteRealisateur = $pdo->prepare("
@@ -263,25 +280,30 @@
 
         $requeteGenre->execute();
 
-        if(isset($_POST['submit'])){
-            if(isset($_FILES["afficheFilm"])) {
+        if(isset($_POST['submit']))
+        {
+            if(isset($_FILES["afficheFilm"])) 
+            {
                 $tmpName = $_FILES["afficheFilm"]["tmp_name"];
                 $name = $_FILES["afficheFilm"]["name"];
                 $size = $_FILES["afficheFilm"]["size"];
                 $error = $_FILES["afficheFilm"]["error"];
-                
+               
                 $tabExtension = explode(".", $name);
                 $extension = strtolower(end($tabExtension));
                 $extensions = ["jpg", "png", "jpeg", 'gif'];
                 $maxSize = 4000000;
-                
-                if(in_array($extension, $extensions) && $size <= $maxTaille && $error == 0) {
-
+               
+                if(in_array($extension, $extensions) && $size <= $maxTaille && $error == 0) 
+                {
+ 
                     $uniqueName = uniqid("", true);
                     $file = $uniqueName . "." . $extension;
                     move_uploaded_file($tmpName, "./public/image/".$file);
-                    $afficherImage = "./public/image/" . $file;
-                } 
+                    $afficheImage = "./public/image/" . $file;
+                } else {
+                    $afficheImage = NULL;
+                }
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_sortie  = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
@@ -293,8 +315,8 @@
         
 
             $requeteFilm = $pdo->prepare("
-                INSERT INTO film (titre, duree, resume, note, date_sortie, id_realisateur)
-                VALUES (:titre, :duree, :resume, :note, :date_sortie, :realisateur)
+                INSERT INTO film (titre, duree, resume, note, date_sortie, afficheFilm, id_realisateur)
+                VALUES (:titre, :duree, :resume, :note, :date_sortie, :afficheImage, :realisateur)
             ");
             $requeteFilm->execute([
                 "titre" => $titre,
@@ -302,6 +324,7 @@
                 "resume" => $resume,
                 "duree" => $duree,
                 "note" => $note,
+                "afficheImage" => $afficheImage,
                 "realisateur" => $realisateur
             ]);
 
@@ -318,15 +341,17 @@
                 ]);
             }
            
-        
+            
             header("Location: index.php?action=listFilms");
+            }
         }
-        }
-        require "view/addFilm.php";
+            require "view/addFilm.php";
     }
 
-        public function addRealisateur() {
-        if(isset($_POST['submit'])){
+        public function addRealisateur() 
+        {
+        if(isset($_POST['submit']))
+            {
             
             $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -361,7 +386,8 @@
         require "view/addRealisateur.php";
     }
 
-    public function addCasting() {
+    public function addCasting() 
+    {
 
         $pdo = Connect::seConnecter();
         $requeteFilmCasting = $pdo->query("SELECT film.id_film, film.titre FROM film");
@@ -378,7 +404,8 @@
         
        
         
-        if(isset($_POST['submit'])){
+        if(isset($_POST['submit']))
+        {
             $film = filter_input(INPUT_POST, "film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -396,6 +423,7 @@
             
             header("Location: index.php?action=listActeur");
             }
+
             require "view/addCasting.php";
             
         }

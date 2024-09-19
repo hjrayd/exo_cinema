@@ -52,11 +52,12 @@ ob_start();
                         <?php }
                     ?>
                 </select>
-            </p>
-                    <label  for="afficheFilm">Affiche du film:</label><br>
-
-                    <input type="file" id="afficheFilm" name="afficheFilm" ><br>
+                </p>
+                    <label  for="affiche">Affiche du film:</label><br>
+ 
+                    <input type="file" id="affiche" name="affiche" ><br>
             <p>
+            
                 <input class="btn" type="submit" name="submit" value="Ajouter le film">
             </p>
             
