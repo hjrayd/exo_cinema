@@ -250,9 +250,39 @@
     public function addFilm() {
         $pdo = Connect::seConnecter();
 
-        if(isset($_POST['submit'])){
+        $requeteRealisateur = $pdo->prepare("
+            SELECT *
+            FROM realisateur
+            INNER JOIN personne  ON realisateur.id_personne = personne.id_personne");
 
-            
+        $requeteRealisateur->execute();
+
+        $requeteGenre = $pdo->prepare("
+            SELECT *
+            FROM genre ");
+
+        $requeteGenre->execute();
+
+        if(isset($_POST['submit'])){
+            if(isset($_FILES["afficheFilm"])) {
+                $tmpName = $_FILES["afficheFilm"]["tmp_name"];
+                $name = $_FILES["afficheFilm"]["name"];
+                $size = $_FILES["afficheFilm"]["size"];
+                $error = $_FILES["afficheFilm"]["error"];
+                
+                $tabExtension = explode(".", $name);
+                $extension = strtolower(end($tabExtension));
+                $extensions = ["jpg", "png", "jpeg", 'gif'];
+                $maxSize = 4000000;
+                
+                if(in_array($extension, $extensions) && $size <= $maxTaille && $error == 0) {
+
+                    $uniqueName = uniqid("", true);
+                    $file = $uniqueName . "." . $extension;
+                    move_uploaded_file($tmpName, "./public/image/".$file);
+                    $afficherImage = "./public/image/" . $file;
+                } 
+
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_sortie  = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
             $resume = filter_input(INPUT_POST, "resume", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -287,25 +317,15 @@
                     "id_genre" => $genre
                 ]);
             }
+           
+        
             header("Location: index.php?action=listFilms");
         }
-
-        $requeteRealisateur = $pdo->prepare("
-            SELECT *
-            FROM realisateur
-            INNER JOIN personne  ON realisateur.id_personne = personne.id_personne");
-
-        $requeteRealisateur->execute();
-
-        $requeteGenre = $pdo->prepare("
-            SELECT *
-            FROM genre ");
-
-        $requeteGenre->execute();
-
+        }
         require "view/addFilm.php";
     }
-    public function addRealisateur() {
+
+        public function addRealisateur() {
         if(isset($_POST['submit'])){
             
             $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -318,7 +338,10 @@
                 (:nom, :prenom, :sexe, :date_naissance);
             ");
             $requeteReal->execute([
-                "nom" => $nom, "prenom" => $prenom, "sexe" => $sexe, "date_naissance" => $date_naissance
+                "nom" => $nom, 
+                "prenom" => $prenom, 
+                "sexe" => $sexe, 
+                "date_naissance" => $date_naissance
             ]);
 
             $last_id = $pdo->lastInsertId();
@@ -343,29 +366,31 @@
         $pdo = Connect::seConnecter();
         $requeteFilmCasting = $pdo->query("SELECT film.id_film, film.titre FROM film");
         $requeteFilmCasting->execute();
+
         $requeteActeurCasting = $pdo->query("SELECT acteur.id_acteur , personne.prenom_personne, personne.nom_personne
         FROM personne
         INNER JOIN acteur 
-        ON acteur.id_personne = personne.id_personne"
-                                                     );
+        ON acteur.id_personne = personne.id_personne");                                  
+        $requeteActeurCasting->execute();
+        
         $requeteRoleCasting = $pdo->query("SELECT id_role, role.nom_role FROM role");
         $requeteRoleCasting->execute();
         
        
-        $requeteActeurCasting->execute();
+        
         if(isset($_POST['submit'])){
-            $film = filter_input(INPUT_POST, "film", FILTER_SANITIZE_NUMBER_INT);
-            $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_NUMBER_INT);
-            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_NUMBER_INT);
-            
+            $film = filter_input(INPUT_POST, "film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $acteur = filter_input(INPUT_POST, "acteur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
             $requeteCasting = $pdo->prepare("
                INSERT INTO casting (id_film, id_acteur, id_role)
-                VALUES (:film, :acteur, role);
+                VALUES (:film, :acteur, role)
             ");
 
             $requeteCasting->execute([
-                "film" => $film,
-                "acteur" => $acteur,
+                "film" => $film, 
+                "acteur" => $acteur, 
                 "role" => $role
             ]);
             
