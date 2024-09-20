@@ -31,7 +31,7 @@ ob_start();
             <p>
                 <label>
                     Note :
-                    <input type="number" name="note">
+                    <input type="number" step="any" name="note">
                 </label>
             </p>
             <p>

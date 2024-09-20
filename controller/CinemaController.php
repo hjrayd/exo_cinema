@@ -76,7 +76,7 @@
 
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare("
-            SELECT date_sortie, resume, duree, titre, note, prenom_personne, nom_personne, realisateur.id_realisateur
+            SELECT date_sortie, resume, duree, titre, note, prenom_personne, nom_personne, afficheFilm, realisateur.id_realisateur
             FROM film
             INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
             INNER JOIN personne ON realisateur.id_personne = personne.id_personne
@@ -287,6 +287,7 @@
                 } else {
                     $afficheFilm = NULL;
                 }
+                
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_sortie  = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
@@ -295,20 +296,22 @@
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
             $genres = filter_input(INPUT_POST, "genres", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+          
         
 
             $requeteFilm = $pdo->prepare("
-            INSERT INTO film (titre, duree, resume, note, date_sortie, afficheFilm, id_realisateur)
-            VALUES (:titre, :duree, :resume, :note, :date_sortie, :afficheImage, :realisateur)
+            INSERT INTO film (titre, duree, resume, note, date_sortie, id_realisateur, afficheFilm)
+            VALUES (:titre, :duree, :resume, :note, :date_sortie, :realisateur, :afficheFilm)
             ");
+
             $requeteFilm->execute([
             "titre" => $titre,
             "date_sortie" => $date_sortie,
             "resume" => $resume,
             "duree" => $duree,
             "note" => $note,
-            "afficheImage" => $afficheImage,
-            "realisateur" => $realisateur
+            "realisateur" => $realisateur,
+            "afficheFilm"=> $afficheFilm
             ]);
 
             $id_film = $pdo -> lastInsertId();

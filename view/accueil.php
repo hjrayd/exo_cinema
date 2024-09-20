@@ -3,16 +3,17 @@ session_start();
 ob_start(); 
 ?>
 
-
+<a href="./"></a>
    <h2> A l'affiche</h2>
+   
       <div id="wrapper">
          <div class="titre">
             <?php
 
             foreach($requete->fetchAll() as $aLaffiche) { ?>
             <a href="index.php?action=detailFilm&id=<?= $aLaffiche["id_film"] ?>"><?= $aLaffiche["titre"] ?></a>
-            <p> <?= $aLaffiche["note"] ?> <p>
-            
+            <img src="<?= $aLaffiche["afficheFilm"]?>" alt="Affiche du Film">
+            <p> <?= $aLaffiche["note"] ?>
 
 
             <?php } ?>
@@ -23,11 +24,10 @@ ob_start();
 
             <div class="nouveautes">
                <?php
-
                foreach($requetee->fetchAll() as $nouveaute) { ?>
                <a href="index.php?action=detailFilm&id=<?= $nouveaute["id_film"] ?>"><?= $nouveaute["titre"] ?></a>
-               <?php $afficheFilm = "./public/image/" .$nouveaute["titre"].".jpg"; ?>
-               <img src="<?= htmlspecialchars($afficheFilm) ?>" alt="Affiche du film <?= htmlspecialchars($nouveaute["titre"]) ?>" />
+               <img src="<?= $nouveaute["afficheFilm"]?>" alt="Affiche du Film">
+               
       
                <?php } ?>
             </div>
