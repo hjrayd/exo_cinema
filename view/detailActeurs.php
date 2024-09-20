@@ -15,7 +15,7 @@ ob_start();
         <table>
             <thead>
                 <tr>
-                    <th> Film</th>
+                    <th> Films </th>
                     <th> Nom du rôle</th>
                   
                 </tr>
