@@ -8,11 +8,11 @@
         public function accueil() {
             $pdo = Connect::seConnecter();
 
-            $requete = $pdo->query("SELECT id_film, titre, note FROM film
+            $requete = $pdo->query("SELECT id_film, titre, note, afficheFilm FROM film
             ORDER BY note DESC
             LIMIT 3");
 
-            $requetee = $pdo->query("SELECT id_film, titre, date_sortie FROM film
+            $requetee = $pdo->query("SELECT id_film, titre, date_sortie, afficheFilm FROM film
             ORDER BY date_sortie DESC
             LIMIT 3");
             require "view/accueil.php";
@@ -268,24 +268,24 @@
         $requeteGenre->execute();
 
         if(isset($_POST['submit'])) {
-            if(isset($_FILES["afficheFilm"])) {
-                $tmpName = $_FILES["afficheFilm"]["tmp_name"];
-                $name = $_FILES["afficheFilm"]["name"];
-                $size = $_FILES["afficheFilm"]["size"];
-                $error = $_FILES["afficheFilm"]["error"];
+            if(isset($_FILES["file"])) {
+                $tmpName = $_FILES["file"]["tmp_name"];
+                $name = $_FILES["file"]["name"];
+                $size = $_FILES["file"]["size"];
+                $error = $_FILES["file"]["error"];
                
                 $tabExtension = explode(".", $name);
                 $extension = strtolower(end($tabExtension));
                 $extensions = ["jpg", "png", "jpeg", 'gif'];
                 $maxSize = 4000000;
                
-                if(in_array($extension, $extensions) && $size <= $maxTaille && $error == 0) {
-                    $uniqueName = uniqid("", true);
-                    $file = $uniqueName . "." . $extension;
+                if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+                    $uniqueName = uniqid('', true);
+                    $file = $uniqueName.".".$extension;
                     move_uploaded_file($tmpName, "./public/image/".$file);
-                    $afficheImage = "./public/image/" . $file;
+                    $afficheFilm = "./public/image/".$file;
                 } else {
-                    $afficheImage = NULL;
+                    $afficheFilm = NULL;
                 }
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);

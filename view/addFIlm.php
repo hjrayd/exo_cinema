@@ -3,7 +3,7 @@ session_start();
 ob_start(); 
 ?>
 
-        <form action="index.php?action=addFilm" method="post">
+        <form action="index.php?action=addFilm" method="post" enctype="multipart/form-data">
             <p> Informations du film :<br> 
                 <label>
                     Titre :
@@ -53,9 +53,9 @@ ob_start();
                     ?>
                 </select>
                 </p>
-                    <label  for="affiche">Affiche du film:</label><br>
+                    <label  for="file">Affiche du film:</label><br>
  
-                    <input type="file" id="affiche" name="affiche" ><br>
+                    <input type="file" id="file" name="file"><br>
             <p>
             
                 <input class="btn" type="submit" name="submit" value="Ajouter le film">
