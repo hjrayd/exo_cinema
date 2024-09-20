@@ -1,3 +1,5 @@
+/*template css*/
+
 *{
     margin: 0;
     padding: 0;
@@ -7,22 +9,32 @@
 nav {
     justify-content: center;
     text-align: center;
-   
+    background-color: #C7B593;
+    height: 40px;
+    padding-top: 10px;
+    color: white;
 }
 
-a {
+nav a:hover {
+  text-decoration: underline;
+}
+
+ a{
     text-decoration: none;
     font-family: "Poppins", sans-serif;
     align-items: center;
-    color: inherit;
+    color: inherit; 
 }
+
 
 a:visited {
     text-decoration: none;
 }
+
 p {
     font-family: "Poppins", sans-serif;
     margin-bottom: 20px;
+    
 }
 
 h1, h2, th{
@@ -64,9 +76,11 @@ th, h2 {
   button {
     border-radius: 20px;
    padding: 10px;
-   border: 0.5px solid grey;
+   border: none;
+   color: white;
    margin-top: 30px;
    transition: 0.9s;
+   background-color: #C7B593;
   }
 
   .button {
@@ -86,9 +100,12 @@ th, h2 {
 img {
     width: 300px;
     height: 450px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 
-  .titre {
+    /*accueil css*/
+
+ .titre {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +117,7 @@ img {
   .test {
     flex-wrap: wrap;
     display: block;
+   
   }
 
   .nouveaute {
@@ -110,14 +128,34 @@ img {
 
   } 
 
-    /*accueil css*/
- 
+    .test a {
+      font-size: 30px;
+      color: #C7B593;
+    }
 
+    .test a:hover {
+      text-decoration: underline;
+      filter: brightness(0.8);
+      transition: 0.4s;
+    }
 
+    .nouveaute a {
+      font-size: 30px;
+      color: #C7B593;
+    }
 
+    .nouveaute a:hover {
+      text-decoration: underline;
+      filter: brightness(0.8);
+      transition: 0.4s;
+    }
 
+    /*Detail Film CSS*/
+.detailFilm img {
+ align-items: center;
+ justify-content: center;
 
-
+}
 
 
 
