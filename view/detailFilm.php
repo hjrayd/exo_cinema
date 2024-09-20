@@ -5,7 +5,9 @@ $film = $requete->fetch();
 ?>
 <div class="detailFilm">
     <h1><?= $film["titre"] ?></h1>
-    <img src="<?= $film["afficheFilm"]?>" alt="Affiche du Film">
+    <div class="image-film">
+        <img src="<?= $film["afficheFilm"]?>" alt="Affiche du Film">
+    </div>
     <p> Date de sortie : <?= $film["date_sortie"] ?></p>
     <p> Durée : <?= $film["duree"]?> minutes</p>
     <p> Note : <?= $film["note"]?>/5</p>

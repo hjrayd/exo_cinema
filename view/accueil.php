@@ -3,10 +3,10 @@ session_start();
 ob_start(); 
 ?>
 
-
+<div id="wrapper">
    <h2> A l'affiche</h2>
    
-      <div id="wrapper">
+      
          <div class="titre">
             <?php
             foreach($requete->fetchAll() as $aLaffiche) { ?>
@@ -26,9 +26,9 @@ ob_start();
                <div class="nouveaute">
                   <img src="<?= $nouveaute["afficheFilm"]?>" alt="Affiche du Film">
                   <a href="index.php?action=detailFilm&id=<?= $nouveaute["id_film"] ?>"><?= $nouveaute["titre"] ?></a>
-                  
-                  <?php } ?>
                </div>
+                  <?php } ?>
+              
             </div>
       </div>
 
