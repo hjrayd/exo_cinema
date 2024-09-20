@@ -83,6 +83,33 @@ th, h2 {
     transition: 0.9s;
   }
 
+img {
+    width: 300px;
+    height: 450px;
+  }
+
+  .titre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+  }
+
+  .test {
+    flex-wrap: wrap;
+    display: block;
+  }
+
+  .nouveaute {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+  } 
+
     /*accueil css*/
  
 
