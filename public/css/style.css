@@ -8,24 +8,40 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-      
+        scroll-padding-top: 2rem;
       }
-      
-      #wrapper {
-        color: black;
+
+   #wrapper {
+        background-color: black;
       }
-      
-      
-      
-      nav {
-          justify-content: center;
-          text-align: center;
-          background-color: #C7B593;
-          height: 40px;
-          padding-top: 10px;
-          color: white;
+
+      header {
+      height: 100px;
+       width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 0;
+        right: 0;
       }
-      
+
+     
+      .logo {
+        height: 300px;
+        align-items: center;
+        display: flex;
+      }
+    
+      .navbar {
+     display: flex;
+      column-gap: 5px;
+      padding-right: 200px;
+       }
+
+       .navbar a {
+        color: white;
+       }
+
       nav a:hover {
         text-decoration: underline;
         filter: brightness(0.9);
@@ -51,28 +67,28 @@
       
       h1, h2, th{
       
-          font-weight: 500; 
+        font-weight: 500; 
+    }
+    
+    h1, h2, p {
+        margin-top: 40px;
+        text-align: center;
+    }
+    
+    th, td {
+        border-bottom: 1px solid #dddd
       }
-      
-      h1, h2, p {
-          margin-top: 40px;
-          text-align: center;
+    
+    th, h2 {
+      color: #C7B593;
+    }
+    
+      table {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 100%;
       }
-      
-      th, td {
-          border-bottom: 1px solid #dddd
-        }
-      
-      th, h2 {
-        color: #C7B593;
-      }
-      
-        table {
-          justify-content: center;
-          text-align: center;
-          align-items: center;
-          width: 100%;
-        }
       
        li {
           display: inline;
@@ -104,12 +120,7 @@
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           transition: 0.9s;}
       
-          .imgfilm {
-            width: 300px;
-            height: 450px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          }
-      
+         
           /*--------------------------------------------------------------------------------------------------------------------------------------------------------
           ------------------------------------------------------------------------------------ACCUEIL CSS--------------------------------------------------------------------
           --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,6 +160,9 @@
       
         .nouveaute img {
           margin-bottom: 20px;
+          width: 300px;
+            height: 450px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
       
           .test a {
@@ -159,6 +173,9 @@
           .test img {
             margin-right: 60px;
             margin-bottom: 20px;
+            width: 300px;
+            height: 450px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           }
       
           .test a:hover {
@@ -183,6 +200,7 @@
             padding-right: 70Px;
             margin: 0;
             font-weight: 300;
+            color: white;
           }
       
       /*--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -193,6 +211,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+       
+      }
+
+      .image-film img {
+        width: 300px;
+        height: 450px;
       }
       
       

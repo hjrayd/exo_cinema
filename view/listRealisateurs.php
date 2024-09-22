@@ -22,8 +22,8 @@
     </table>
     <div class="button">
             <button><a href="index.php?action=addRealisateur">Ajouter un Réalisateur</a></button>
-        </div>
-
+        
+    </div>
 <?php
 
 $titre = "Liste des réalisateurs";
