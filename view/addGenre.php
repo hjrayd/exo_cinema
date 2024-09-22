@@ -3,6 +3,7 @@
 ob_start(); 
 ?>
 
+
         <form action="index.php?action=addGenre" method="post">
             <p>
                 <label>

@@ -3,190 +3,198 @@
     --------------------------------------------------------------------------------------------------------------------------------------------------------
     --------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-nav {
-    justify-content: center;
-    text-align: center;
-    background-color: #C7B593;
-    height: 40px;
-    padding-top: 10px;
-    color: white;
-}
-
-nav a:hover {
-  text-decoration: underline;
-  filter: brightness(0.9);
-  transition: 1s ease-in-out;
-}
-
- a{
-    text-decoration: none;
-    font-family: "Poppins", sans-serif;
-    align-items: center;
-    color: inherit; 
-}
-
-
-a:visited {
-    text-decoration: none;
-}
-
-p {
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 20px;
-    
-}
-
-h1, h2, th{
-    font-family: "Poppins", sans-serif;
-    font-weight: 500; 
-}
-
-h1, h2, p {
-    margin-top: 40px;
-    text-align: center;
-}
-
-th, td {
-    border-bottom: 1px solid #dddd
-  }
-
-th, h2 {
-  color: #C7B593;
-}
-
-  table {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-  }
-
- li {
-    display: inline;
-    border-right: 1px solid;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  button {
-    border-radius: 20px;
-   padding: 10px;
-   border: none;
-   color: white;
-   margin-top: 30px;
-   transition: 0.9s;
-   background-color: #C7B593;
-  }
-
-  .button {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-  }
-
-  button:hover {
-    filter: brightness(0.9);
-    border: none;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: 0.9s;}
-
-img {
-    width: 300px;
-    height: 450px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-
-    /*--------------------------------------------------------------------------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------ACCUEIL CSS--------------------------------------------------------------------
-    --------------------------------------------------------------------------------------------------------------------------------------------------------
-    --------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
- .titre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  
-  }
-
-  #wrapper h2 {
-    font-size: 40px;
-  }
-
-  .test {
-     display: flex;
-   flex-direction: column;
-   padding: 50px;
-  }
-
-  .nouveautes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  
-  } 
-
-  .nouveaute {
-    display: flex;
-    flex-direction: column;
-    margin: 80px;
-  }
-
-  .nouveaute img {
-    margin-bottom: 20px;
-  }
-
-    .test a {
-      font-size: 30px;
-      color: #C7B593;
-    }
-
-    .test img {
-      margin-right: 60px;
-      margin-bottom: 20px;
-    }
-
-    .test a:hover {
-      text-decoration: underline;
-      filter: brightness(0.8);
-      transition: 0.4s;
-    }
-
-    .nouveaute a {
-      font-size: 30px;
-      color: #C7B593;
-    }
-
-    .nouveaute a:hover {
-      text-decoration: underline;
-      filter: brightness(0.8);
-      transition: 0.4s;
-    }
-
-    .test p {
-      font-size: 20px;
-      padding-right: 70Px;
-      margin: 0;
-      font-weight: 300;
-    }
-
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------DETAIL FILM CSS--------------------------------------------------------------------
-    --------------------------------------------------------------------------------------------------------------------------------------------------------
-    --------------------------------------------------------------------------------------------------------------------------------------------------------*/
-.image-film {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
+    *{
+        font-family: "Poppins", sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      
+      }
+      
+      #wrapper {
+        color: black;
+      }
+      
+      
+      
+      nav {
+          justify-content: center;
+          text-align: center;
+          background-color: #C7B593;
+          height: 40px;
+          padding-top: 10px;
+          color: white;
+      }
+      
+      nav a:hover {
+        text-decoration: underline;
+        filter: brightness(0.9);
+        transition: 1s ease-in-out;
+      }
+      
+       a{
+          text-decoration: none;
+          align-items: center;
+          color: inherit; 
+      }
+      
+      
+      a:visited {
+          text-decoration: none;
+      }
+      
+      p {
+      
+          margin-bottom: 20px;
+          
+      }
+      
+      h1, h2, th{
+      
+          font-weight: 500; 
+      }
+      
+      h1, h2, p {
+          margin-top: 40px;
+          text-align: center;
+      }
+      
+      th, td {
+          border-bottom: 1px solid #dddd
+        }
+      
+      th, h2 {
+        color: #C7B593;
+      }
+      
+        table {
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+          width: 100%;
+        }
+      
+       li {
+          display: inline;
+          border-right: 1px solid;
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+      
+        button {
+          border-radius: 20px;
+         padding: 10px;
+         border: none;
+         color: white;
+         margin-top: 30px;
+         transition: 0.9s;
+         background-color: #C7B593;
+        }
+      
+        .button {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+      
+        }
+      
+        button:hover {
+          filter: brightness(0.9);
+          border: none;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          transition: 0.9s;}
+      
+          .imgfilm {
+            width: 300px;
+            height: 450px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          }
+      
+          /*--------------------------------------------------------------------------------------------------------------------------------------------------------
+          ------------------------------------------------------------------------------------ACCUEIL CSS--------------------------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------------------------------------------------*/
+      
+          .titre {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+          
+          }
+        
+          #wrapper h2 {
+            font-size: 40px;
+          }
+        
+          .test {
+             display: flex;
+           flex-direction: column;
+           padding: 50px;
+          }
+        
+          .nouveautes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+          
+          } 
+        
+          .nouveaute {
+            display: flex;
+            flex-direction: column;
+            margin: 80px;
+          }
+      
+        .nouveaute img {
+          margin-bottom: 20px;
+        }
+      
+          .test a {
+            font-size: 30px;
+            color: #C7B593;
+          }
+      
+          .test img {
+            margin-right: 60px;
+            margin-bottom: 20px;
+          }
+      
+          .test a:hover {
+            text-decoration: underline;
+            filter: brightness(0.8);
+            transition: 0.4s;
+          }
+      
+          .nouveaute a {
+            font-size: 30px;
+            color: #C7B593;
+          }
+      
+          .nouveaute a:hover {
+            text-decoration: underline;
+            filter: brightness(0.8);
+            transition: 0.4s;
+          }
+      
+          .test p {
+            font-size: 20px;
+            padding-right: 70Px;
+            margin: 0;
+            font-weight: 300;
+          }
+      
+      /*--------------------------------------------------------------------------------------------------------------------------------------------------------
+          ------------------------------------------------------------------------------------DETAIL FILM CSS--------------------------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------------------------------------------------
+          --------------------------------------------------------------------------------------------------------------------------------------------------------*/
+      .image-film {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      
+      
+      

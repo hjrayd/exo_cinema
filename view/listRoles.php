@@ -1,26 +1,28 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?=$requete->rowCount() ?> rôles </p>
 
-<table>
-    <thead>
-        <tr>
+    <p> Il y a <?=$requete->rowCount() ?> rôles </p>
 
-           <th>NOM</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach($requete->fetchAll() as $role) { ?>
+    <table>
+        <thead>
             <tr>
-            <td><a href="index.php?action=detailRoles&id=<?=$role["id_role"]?>"><?= $role["nom_role"] ?></a></td>
+
+            <th>Rôles</th>
             </tr>
-        <?php } ?>
-    </tbody>
-</table>
-<div class="button">
-    <button><a href="index.php?action=addRole">Ajouter un rôle</a></button>
-</div>
+        </thead>
+        <tbody>
+            <?php
+            foreach($requete->fetchAll() as $role) { ?>
+                <tr>
+                <td><a href="index.php?action=detailRoles&id=<?=$role["id_role"]?>"><?= $role["nom_role"] ?></a></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <div class="button">
+        <button><a href="index.php?action=addRole">Ajouter un rôle</a></button>
+    </div>
+
 <?php
 
 $titre = "Liste des rôles";

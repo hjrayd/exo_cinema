@@ -11,7 +11,7 @@ ob_start();
             <?php
             foreach($requete->fetchAll() as $aLaffiche) { ?>
             <div class="test">
-               <img src="<?= $aLaffiche["afficheFilm"]?>" alt="Affiche du Film">
+               <img class="imgfilm" src="<?= $aLaffiche["afficheFilm"]?>" alt="Affiche du Film">
                <a href="index.php?action=detailFilm&id=<?= $aLaffiche["id_film"] ?>"><?= $aLaffiche["titre"] ?></a>
                <p> <?= $aLaffiche["note"] ?>/5 </p>
             </div>
@@ -24,7 +24,7 @@ ob_start();
                <?php
                foreach($requetee->fetchAll() as $nouveaute) { ?>
                <div class="nouveaute">
-                  <img src="<?= $nouveaute["afficheFilm"]?>" alt="Affiche du Film">
+                  <img class="imgfilm" src="<?= $nouveaute["afficheFilm"]?>" alt="Affiche du Film">
                   <a href="index.php?action=detailFilm&id=<?= $nouveaute["id_film"] ?>"><?= $nouveaute["titre"] ?></a>
                </div>
                   <?php } ?>
