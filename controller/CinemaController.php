@@ -8,7 +8,7 @@
         public function accueil() {
             $pdo = Connect::seConnecter();
 
-            $requete = $pdo->query("SELECT id_film, titre, note, afficheFilm FROM film
+            $requete = $pdo->query("SELECT id_film, titre, note, resume,  afficheFilm  FROM film
             ORDER BY note DESC
             LIMIT 3");
 

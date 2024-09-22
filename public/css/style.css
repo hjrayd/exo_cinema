@@ -8,16 +8,18 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-        scroll-padding-top: 2rem;
+  
       }
 
-   #wrapper {
-        background-color: black;
-      }
+        #wrapper {
+          background-color: black;
+          min-height: 100vh;
+        }
 
       header {
       height: 100px;
        width: 100%;
+       margin-bottom: 40px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -44,15 +46,15 @@
 
       nav a:hover {
         text-decoration: underline;
+        text-decoration-color: red;
         filter: brightness(0.9);
-        transition: 1s ease-in-out;
+      
       }
       
        a{
           text-decoration: none;
           align-items: center;
-          color: inherit; 
-      }
+          color: white;      }
       
       
       a:visited {
@@ -60,36 +62,11 @@
       }
       
       p {
-      
-          margin-bottom: 20px;
-          
+        color: white;
+  
       }
       
-      h1, h2, th{
-      
-        font-weight: 500; 
-    }
-    
-    h1, h2, p {
-        margin-top: 40px;
-        text-align: center;
-    }
-    
-    th, td {
-        border-bottom: 1px solid #dddd
-      }
-    
-    th, h2 {
-      color: #C7B593;
-    }
-    
-      table {
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        width: 100%;
-      }
-      
+   
        li {
           display: inline;
           border-right: 1px solid;
@@ -104,7 +81,7 @@
          color: white;
          margin-top: 30px;
          transition: 0.9s;
-         background-color: #C7B593;
+         background-color: red;
         }
       
         .button {
@@ -120,88 +97,106 @@
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           transition: 0.9s;}
       
-         
+         h2 {
+    color: white;
+
+    font-size: 40px;
+    font-weight: 300;
+   
+    border-bottom: 3px solid red;   
+    width: 400px;
+    text-align: center;
+    margin-left: 700px;
+    margin-bottom: 100px;
+     
+   }
           /*--------------------------------------------------------------------------------------------------------------------------------------------------------
           ------------------------------------------------------------------------------------ACCUEIL CSS--------------------------------------------------------------------
           --------------------------------------------------------------------------------------------------------------------------------------------------------
           --------------------------------------------------------------------------------------------------------------------------------------------------------*/
-      
-          .titre {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-          
-          }
-        
-          #wrapper h2 {
-            font-size: 40px;
-          }
-        
-          .test {
-             display: flex;
-           flex-direction: column;
-           padding: 50px;
-          }
-        
-          .nouveautes {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-          
-          } 
-        
-          .nouveaute {
-            display: flex;
-            flex-direction: column;
-            margin: 80px;
-          }
-      
-        .nouveaute img {
-          margin-bottom: 20px;
-          width: 300px;
-            height: 450px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }
-      
-          .test a {
-            font-size: 30px;
-            color: #C7B593;
-          }
-      
-          .test img {
-            margin-right: 60px;
-            margin-bottom: 20px;
-            width: 300px;
-            height: 450px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          }
-      
-          .test a:hover {
-            text-decoration: underline;
-            filter: brightness(0.8);
-            transition: 0.4s;
-          }
-      
-          .nouveaute a {
-            font-size: 30px;
-            color: #C7B593;
-          }
-      
-          .nouveaute a:hover {
-            text-decoration: underline;
-            filter: brightness(0.8);
-            transition: 0.4s;
-          }
-      
-          .test p {
-            font-size: 20px;
-            padding-right: 70Px;
-            margin: 0;
-            font-weight: 300;
-            color: white;
-          }
+   .container {
+      width: 100%;
+      min-height: 640px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgb(2, 3, 7, 0.5);
+   }
+  
+   .container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+   object-position: right;
+   padding-right: 200px;
+    z-index: -1;
+   }
+
+  .home h2 {
+    
+  }
+   .home-text 
+   {
+    text-align: justify;
+    width: 600px;
+    padding-top: 30px;
+    padding-left: 60px;
+   }
+
+   .titre-film {
+    font-size: 50px;
+   }
+
+   .home-text a {
+    background-color: red;
+    border-radius: 20px;
+    padding: 15px;
+
+   }
+
+   .home-text a:hover {
+    opacity: 0.7;
+   }
+
+    .home-text p {
+      margin-bottom: 40px;
+    }
+
+   .nouveautes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+ 
+  }
+   .nouveaute {
+    display: flex;
+    flex-direction: column;
+    margin: 80px;
+  }
+
+.nouveaute img {
+  margin-bottom: 20px;
+  width: 300px;
+    height: 450px;
+
+}
+
+
+
+.nouveaute a {
+  font-size: 30px;
+}
+
+.nouveaute a:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+  filter: brightness(0.8);
+  
+}
+  
+  
       
       /*--------------------------------------------------------------------------------------------------------------------------------------------------------
           ------------------------------------------------------------------------------------DETAIL FILM CSS--------------------------------------------------------------------
