@@ -2,7 +2,7 @@
 session_start();
 ob_start(); 
 ?>
-
+<div class="form-action">
         <form action="index.php?action=addCasting" method="post">
 
             <p>
@@ -45,7 +45,7 @@ ob_start();
             
 
         </form>
-
+                        </div>
 <?php
 
 $titre = "Associer un acteur à un film et un rôle";

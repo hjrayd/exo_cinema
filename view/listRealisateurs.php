@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 
-    <p> Il y a <?=$requete->rowCount() ?> réalisateurs </p>
+    <p class="nombre-list"> Il y a <?=$requete->rowCount() ?> réalisateurs </p>
 
     <table class="table">
         <thead>

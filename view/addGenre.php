@@ -3,7 +3,7 @@
 ob_start(); 
 ?>
 
-
+<div class="form-action">
         <form action="index.php?action=addGenre" method="post">
             <p>
                 <label>
@@ -16,7 +16,7 @@ ob_start();
             </p>
 
         </form>
-
+</div>
 <?php
 
 $titre = "Ajouter un genre";

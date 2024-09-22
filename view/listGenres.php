@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-    <p> Il y a <?=$requete->rowCount() ?> genres </p>
+    <p class="nombre-list"> Il y a <?=$requete->rowCount() ?> genres </p>
 
     <table>
         <thead>

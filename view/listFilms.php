@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-    <p> Il y a <?=$requete->rowCount() ?> films </p>
+    <p class="nombre-list"> Il y a <?=$requete->rowCount() ?> films </p>
 
     <table>
         <thead>

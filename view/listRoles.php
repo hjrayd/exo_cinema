@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 
-    <p> Il y a <?=$requete->rowCount() ?> rôles </p>
+    <p class="nombre-list"> Il y a <?=$requete->rowCount() ?> rôles </p>
 
     <table>
         <thead>

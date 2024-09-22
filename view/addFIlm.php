@@ -2,7 +2,7 @@
 session_start();
 ob_start(); 
 ?>
-
+<div class="form-action">
         <form action="index.php?action=addFilm" method="post" enctype="multipart/form-data">
             <p> Informations du film :<br> 
                 <label>
@@ -63,7 +63,7 @@ ob_start();
             
 
         </form>
-
+                        </div>
 <?php
 
 $titre = "Ajouter un film";

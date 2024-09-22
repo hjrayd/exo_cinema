@@ -2,7 +2,7 @@
 session_start();
 ob_start(); 
 ?>
-
+<div class="form-action">
         <form action="index.php?action=addActeur" method="post">
             <p> Informations de l'acteur :<br> 
                 <label>
@@ -34,7 +34,7 @@ ob_start();
             </p>
 
         </form>
-
+</div>
 <?php
 
 $titre = "Ajouter un acteur";
