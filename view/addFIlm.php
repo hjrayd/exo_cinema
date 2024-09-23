@@ -42,16 +42,21 @@ ob_start();
                             <input type="checkbox" name="genres[]" value="<?= $genre["id_genre"] ?>"><?= $genre["nom_genre"]?><br>
                         <?php }
                     ?>
+                    </label>
                 </select>
             </p>
             <p>
+                <label>
+                    Réalisateur: <br>
                 <select name="realisateur">
+                    
                     <?php
                         foreach($requeteRealisateur->fetchAll() as $realisateur) { ?>
                             <option value="<?= $realisateur["id_realisateur"] ?>"><?= $realisateur["prenom_personne"]." ".$realisateur["nom_personne"] ?></option>
                         <?php }
                     ?>
                 </select>
+                        </label>
                 </p>
                     <label  for="file">Affiche du film:</label><br>
  
@@ -61,7 +66,6 @@ ob_start();
                 <input class="btn" type="submit" name="submit" value="Ajouter le film">
             </p>
             
-
         </form>
                         </div>
 <?php

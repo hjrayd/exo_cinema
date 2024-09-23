@@ -2,16 +2,16 @@
 
 ob_start(); 
 ?>
-
+<div class="detailActeur">
     <?php
-
+    
         foreach($requeteActeurs->fetchAll() as $acteur){ ?>
         <p> Prénom: <?=$acteur["prenom_personne"]?>
             <p> Nom: <?=$acteur["nom_personne"]?>
             <p> Sexe: <?=$acteur["sexe"]?>
             <p> Date de Naissance: <?=$acteur["nvlle_date"]?>
             <?php } ?>
-
+</div>
             <table>
                 <thead>
                     <tr>
@@ -21,6 +21,8 @@ ob_start();
                     </tr>
                 </thead>
             <tbody>
+
+            
     <?php
                 foreach($requeteDetailActeurFilms->fetchAll() as $films){ ?>
                 <tr>

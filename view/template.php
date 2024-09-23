@@ -30,7 +30,9 @@
         </header>
     <main>
         
+    <div class="grand-titre">
         <h2><?= $titre_secondaire ?></h2>
+    </div>
         <?= $contenu ?>
     </main>
 </div>
