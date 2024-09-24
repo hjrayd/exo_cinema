@@ -21,7 +21,7 @@
         public function listFilms() {
 
             $pdo = Connect::seConnecter();
-            $requete = $pdo->query("SELECT id_film, titre, date_sortie FROM film");
+            $requete = $pdo->query("SELECT id_film, titre, date_sortie FROM film ORDER BY titre ");
 
             require "view/listFilms.php";
         }
@@ -32,7 +32,8 @@
             $requete = $pdo->query("
             SELECT nom_personne, prenom_personne, id_acteur
             FROM personne
-            INNER JOIN acteur ON personne.id_personne = acteur.id_personne;
+            INNER JOIN acteur ON personne.id_personne = acteur.id_personne 
+            ORDER BY prenom_personne;
             ");
 
             require "view/listActeurs.php";
@@ -44,7 +45,8 @@
             $requete = $pdo->query("
             SELECT nom_personne, prenom_personne, id_realisateur
             FROM personne
-            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne;
+            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+            ORDER BY prenom_personne;
             ");
 
             require "view/listRealisateurs.php";
@@ -56,6 +58,7 @@
             $requete = $pdo->query("
             SELECT nom_genre, id_genre
             FROM genre
+            ORDER BY nom_genre
             ");
 
             require "view/listGenres.php";
@@ -67,6 +70,7 @@
             $requete = $pdo->query("
             SELECT nom_role, id_role
             FROM role
+            ORDER BY nom_role
             ");
 
             require "view/listRoles.php";
