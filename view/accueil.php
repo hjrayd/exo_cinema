@@ -42,6 +42,6 @@ ob_start();
 <?php
 
 $titre = "Accueil";
-$titre_secondaire = "A l'affiche";
+$titre_secondaire = "À l'affiche";
 $contenu = ob_get_clean();
 require "template.php";
